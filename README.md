@@ -8,6 +8,11 @@ Java8를 사용한지 2년이 넘어가지만 나름 정리한 내용이, 이곳
 gradle eclipse
 ```
 
+
+* [Default Method for Interface][Default_Method_for_Interface] 
+[Default_Method_for_Interface]: https://github.com/antksk/java8-training/blob/develop/src/test/java/com/github/antksk/java8_training/_00_Default_Method_for_Interface.java
+
 ### ref
 * [Java 8 tutorial][Java 8 tutorial]
 [Java 8 tutorial]: https://github.com/antksk/ref/blob/master/java/java%208%20tutorial.md
+
