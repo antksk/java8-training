@@ -10,6 +10,14 @@ import com.github.antksk.java8_training.data.TestData;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 기존 버전의 JAVA에선 익명 메소드를 사용하여 처리하던 사항을 
+ * 간단하게 람다 형식으로 변경한 예저로
+ * 메소드에 대한 기본 정보만 존재하면 람다형식으로 많은 축약화가 가능함
+ * @author Seung Gyum Kim
+ * @see
+ *  
+ */
 @Slf4j
 public class _01_Lambda_expressions {
   
