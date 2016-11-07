@@ -83,7 +83,7 @@ public final class _00_Default_Method_for_Interface {
     FahrenheitFormula fahrenheit = new FahrenheitFormula();
     result(fahrenheit, -273.15, -459.67 ); // 예상 : -459.67 °F
     result(fahrenheit, -45.56, -50 ); // 예상 : -50 °F
-    result(fahrenheit, -40.00, -40 ); // -40 °F
+    result(fahrenheit, -40.00, -40 ); // 예상 : -40 °F
     
     log.debug("#### transformation code : " );
     // calculate 메소드 내부에서 default 메소드인 base 호출하여 결과 계산함
