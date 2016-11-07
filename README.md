@@ -15,7 +15,7 @@ gradle eclipse
 [Java_8_tutorial_en]: https://github.com/winterbe/java8-tutorial
 [Java_8_tutorial_kr]: https://github.com/yakmoz/ref/blob/master/java/java%208%20tutorial.md
 
-### 작업 내역
+### Java8로 적용 샘플 코드
 * [Default Method for Interface][Default_Method_for_Interface]
 * [Lambda expressions][Lambda_expressions]
 * [Functional Interface][Functional_Interface]
