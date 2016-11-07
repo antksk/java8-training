@@ -1,6 +1,15 @@
 package com.github.antksk.java8_training;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.junit.Test;
+
+import com.google.common.collect.ImmutableMap;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,15 +43,51 @@ public class _02_Functional_Interface {
     R convert(T from);
   }
   
+  class NameConverter implements Converter<Integer, String>{
+    @Override
+    public Integer convert(String from) {
+      Pattern pattern = Pattern.compile("^[a-z]+_(0?[0-9]+)");
+      Matcher matcher = pattern.matcher(from);
+      if( matcher.matches() && 1 == matcher.groupCount() ){
+        return Integer.valueOf(matcher.group(1));
+      }
+      return Integer.MIN_VALUE;
+    }
+    
+    final Map<String, Integer> map = new ImmutableMap.Builder<String, Integer>()
+      .put("show",111)
+      .put("me",222)
+      .put("the",333)
+      .put("money",444)
+    .build();
+    public Integer toMappingInt(String from) {
+      if( map.containsKey(from) ){
+        return map.get(from);
+      }
+      return Integer.MIN_VALUE;
+    }
+  }
+  
   @Test
   public void 함수_인터페이스_키워드_활용한_테스트(){
     
-    displayConverterResult((s)->Integer.valueOf(s), "10");
+    displayConverterResult((s)->Integer.valueOf(s), "10", 10);
     // or 
-    displayConverterResult(Integer::valueOf, "100");
+    displayConverterResult(Integer::valueOf, "100", 100);
+    
+    // 인스턴스를 사용하면,
+    NameConverter nameConverter = new NameConverter();
+    displayConverterResult(nameConverter::convert, "abc_01", 1);
+    displayConverterResult(nameConverter::convert, "abc01", Integer.MIN_VALUE);
+    // 메소드 이름이 같은 경우에 호출되는 것이 아니라, 
+    // 메소드 정의 형식이 같으면 호출됨
+    displayConverterResult(nameConverter::toMappingInt, "the", 333);
+    displayConverterResult(nameConverter::toMappingInt, "the money", Integer.MIN_VALUE);
   }
   
-  void displayConverterResult(Converter<Integer, String> c, String from){
-    log.debug("display converter result : {}", c.convert(from));
+  void displayConverterResult(Converter<Integer, String> c, String from, int expect){
+    Integer convert = c.convert(from);
+    assertThat(convert, is(expect));
+    log.debug("display converter result : {}", convert);
   }
 }   
