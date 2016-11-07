@@ -69,6 +69,11 @@ public class _02_Functional_Interface {
     }
   }
   
+  /**
+   * Functional Interface 내용에 대응
+   * @see
+   *    https://github.com/yakmoz/ref/blob/master/java/java%208%20tutorial.md#functional-interface
+   */
   @Test
   public void 함수_인터페이스_키워드_활용한_테스트(){
     
@@ -103,6 +108,11 @@ public class _02_Functional_Interface {
     R create( String name, Integer age );
   }
   
+  /**
+   * Method and Constructor References 내용과 대응
+   * @see 
+   *    https://github.com/yakmoz/ref/blob/master/java/java%208%20tutorial.md#method-and-constructor-references
+   */
   @Test
   public void 생성자를_호출하는_형태_테스트(){
     // 불변 객체를 만들때, 생성자에 데이터를 설정하는 경우가 많은데, 
@@ -110,5 +120,22 @@ public class _02_Functional_Interface {
     // 객체 생성에 대한 정의를 PersonFactroy에게 위읨하여 아래와 같이 정의 할수 있다.
     PersonFactory<Person> personFactory = Person::new;
     Person p1 = personFactory.create("test p1", 2);
+  }
+  
+  /**
+   * Accessing local variables, Accessing fields and static variables
+   * @see
+   *    https://github.com/yakmoz/ref/blob/master/java/java%208%20tutorial.md#accessing-local-variables
+   */
+  @Test
+  public void Lambda_변수_관리_범위_테스트(){
+    // 지역변수 num은 stringConverter 에서 사용되기 때문에,
+    // 암묵적으로 final int num = 1;이 된다. 
+    // 즉, num 변수에 재할당이 불가능하다.
+    int num = 1;
+    // 또한, 람다식 안에서 num 객체에 대한 재할당도 금지 된다.
+    Converter<Integer, String> stringConverter = (from) -> Integer.valueOf(from + num);
+    stringConverter.convert("1234");
+    // 하지만, field나 static 변수의 경우, 람다식에서 수정이 가능하다. 이는 익명 오브젝트의 특징과 같다.
   }
 }   
