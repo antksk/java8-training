@@ -1,6 +1,7 @@
 package com.github.antksk.java8_training;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.number.IsCloseTo.closeTo;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
@@ -23,7 +24,7 @@ public final class _00_Default_Method_for_Interface {
    * default가 포함된 interface
    */
   interface Formula {
-    double calculate(float a);
+    double calculate(double a);
 
     /**
      * - interface에 default 키워드 추가됨 - @FunctionalInterface 를 위한 대안으로 생각됨
@@ -51,7 +52,7 @@ public final class _00_Default_Method_for_Interface {
    */
   class CelsiusFormula implements Formula{
     @Override
-    public double calculate(float F) {
+    public double calculate(double F) {
       return (F - base()) / gap();
     }
     
@@ -62,7 +63,7 @@ public final class _00_Default_Method_for_Interface {
    */
   class FahrenheitFormula implements Formula{
     @Override
-    public double calculate(float C) {
+    public double calculate(double C) {
       return (C * gap()) + base();
     }
   }
@@ -74,15 +75,15 @@ public final class _00_Default_Method_for_Interface {
     
     log.debug("#### CelsiusFormula : ");
     CelsiusFormula celsius = new CelsiusFormula();
-    result(celsius, -459.67f ); // 예상 : -273.15 °C
-    result(celsius, -50f ); // 예상 : -45.56 °C
-    result(celsius, -40f ); // 예상 : -40.00 °C
+    result(celsius, -459.67,  -273.15); // 예상 : -273.15 °C
+    result(celsius, -50, -45.56 ); // 예상 : -45.56 °C
+    result(celsius, -40, -40.00 ); // 예상 : -40.00 °C
     
     log.debug("#### FahrenheitFormula : ");
     FahrenheitFormula fahrenheit = new FahrenheitFormula();
-    result(fahrenheit, -273.15f ); // 예상 : -459.67 °F
-    result(fahrenheit, -45.56f ); // 예상 : -50 °F
-    result(fahrenheit, -40.00f ); // -40 °F
+    result(fahrenheit, -273.15, -459.67 ); // 예상 : -459.67 °F
+    result(fahrenheit, -45.56, -50 ); // 예상 : -50 °F
+    result(fahrenheit, -40.00, -40 ); // -40 °F
     
     log.debug("#### transformation code : " );
     // calculate 메소드 내부에서 default 메소드인 base 호출하여 결과 계산함
@@ -90,23 +91,18 @@ public final class _00_Default_Method_for_Interface {
       // 이름 없는 객체 생성
       new Formula() {
         @Override
-        public double calculate(float a) {
-            return base() + 100;
+        public double calculate(double a) {
+            return base() + a;
         }
-      }, 100
+      }, 100, 132
     );
   }
   //@formatter:on;
 
-  private void result(Formula formula, float value, double expect) {
+  private void result(Formula formula, double value, double expect) {
     // assertThat(formula.calculate(value), is(expect));
-    assertThat(formula.calculate(value), is(expect));
+    assertThat(formula.calculate(value), closeTo(expect, 2));
     log.debug("{} := {}", formula.calculate(value), expect);
   }
   
-  private void result(Formula formula, float value) {
-    // assertThat(formula.calculate(value), is(expect));
-    log.debug("{}", formula.calculate(value));
-  }
-
 }
