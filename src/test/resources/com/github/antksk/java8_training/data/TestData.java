@@ -13,5 +13,4 @@ public final class TestData {
   public List<String> inMemoryDataWithDummyNameList(){
     return Arrays.asList("peter", "anna", "mike", "xenia");
   }
-  
 }
