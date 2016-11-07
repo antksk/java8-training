@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import com.google.common.collect.ImmutableMap;
 
+import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -89,5 +90,25 @@ public class _02_Functional_Interface {
     Integer convert = c.convert(from);
     assertThat(convert, is(expect));
     log.debug("display converter result : {}", convert);
+  }
+  
+  @Value
+  class Person{
+    String name;
+    Integer age;
+  }
+  
+  @FunctionalInterface
+  interface PersonFactory<R extends Person> {
+    R create( String name, Integer age );
+  }
+  
+  @Test
+  public void 생성자를_호출하는_형태_테스트(){
+    // 불변 객체를 만들때, 생성자에 데이터를 설정하는 경우가 많은데, 
+    Person p0 = new Person("test p0", 1);
+    // 객체 생성에 대한 정의를 PersonFactroy에게 위읨하여 아래와 같이 정의 할수 있다.
+    PersonFactory<Person> personFactory = Person::new;
+    Person p1 = personFactory.create("test p1", 2);
   }
 }   
