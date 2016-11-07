@@ -19,6 +19,8 @@ gradle eclipse
 * [Default Method for Interface][Default_Method_for_Interface]
 * [Lambda expressions][Lambda_expressions]
 * [Functional Interface][Functional_Interface]
+* [Built-in Functional Interfaces][Built_in_Functional_Interfaces]
 [Default_Method_for_Interface]: https://github.com/antksk/java8-training/blob/develop/src/test/java/com/github/antksk/java8_training/_00_Default_Method_for_Interface.java#L73
 [Lambda_expressions]: https://github.com/antksk/java8-training/blob/develop/src/test/java/com/github/antksk/java8_training/_01_Lambda_expressions.java#L44
 [Functional_Interface]: https://github.com/antksk/java8-training/blob/develop/src/test/java/com/github/antksk/java8_training/_02_Functional_Interface.java#L38
+[Built_in_Functional_Interfaces]: https://github.com/antksk/java8-training/blob/develop/src/test/java/com/github/antksk/java8_training/_03_Built_in_Functional_Interfaces.java#L20
