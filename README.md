@@ -21,12 +21,13 @@ gradle eclipse
 [Built_in_Functional_Interfaces]: https://github.com/antksk/java8-training/blob/develop/src/test/java/com/github/antksk/java8_training/_03_Built_in_Functional_Interfaces.java#L20
 
 * stream: 일종의 pipeline으로 연속적인 어떤 데이터의 흐름을 가르킴, Stream 연산 들은 중간 연산(intermediate operation) 이거나 결과 값을 리턴하는 종단 연산(terminal operation) 이다. 
-	- filter
-	- sorted
-	- map
-	- (termail)match
-	- (terminal)count
-	- (terminal)reduce
+	- filter(Predicate<? super T> predicate) : 지정된 predicate의해서 지정된 값과 일치(match)한 값들만 취합 
+	- sorted(Comparator<? super T> comparator): stream에 정렬에 대한 마킹만 하고 실제 정렬은, 종단 연산이 수행될때 진행됨(기본은 오름차순정렬)
+	- map(Function<? super T, ? extends R> mapper) : 지정된 strem의 데이터를 임의 데이터로 변경
+	- __(terminal)__ forEach(Consumer<? super T> action) : (소비) 각각의 데이터를 모두 소비
+	- __(terminal)__ match : any(아무거나 한개 이상 match), all(모두 match), none(한개도 match되지 않음) match가 존재 하며, 소비 함수 임 
+	- __(terminal)__ count : stream에 존재하는 element 갯수 확인(소비, long 타입으로 리턴)
+	- __(terminal)__ reduce
 	
 
 ### 참고 자료

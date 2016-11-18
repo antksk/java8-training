@@ -41,6 +41,7 @@ public class _00_Filter {
     filteringAndDisplayResult(a, dummyList.stream());
     filteringAndDisplayResult(b, dummyList.stream());
     filteringAndDisplayResult(c, dummyList.stream());
+    
   }
   
   void filteringAndDisplayResult(Predicate<? super String> predicate, Stream<String> stream){
