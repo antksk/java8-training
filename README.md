@@ -39,3 +39,5 @@ gradle eclipse
 
 [Java_8_tutorial_en]: https://github.com/winterbe/java8-tutorial
 [Java_8_tutorial_kr]: https://github.com/yakmoz/ref/blob/master/java/java%208%20tutorial.md
+# java8-training
+Java8를 사용한지 2년이 넘어가지만 나름 정리한 내용이, 이곳 저곳에 흐터져 있어 이곳에 다시 정리함
