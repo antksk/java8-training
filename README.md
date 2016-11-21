@@ -27,7 +27,7 @@ gradle eclipse
 	- __(terminal)__ forEach(Consumer<? super T> action) : (소비) 각각의 데이터를 모두 소비
 	- __(terminal)__ match : any(아무거나 한개 이상 match), all(모두 match), none(한개도 match되지 않음) match가 존재 하며, 소비 함수 임 
 	- __(terminal)__ count : stream에 존재하는 element 갯수 확인(소비, long 타입으로 리턴)
-	- __(terminal)__ reduce
+	- __(terminal)__ reduce : 결합법칙(결합하는 순서는 중요하지 않아야 함)이 적용된 결과값을 리턴
 [filter]: https://github.com/antksk/java8-training/blob/develop/src/test/java/com/github/antksk/java8_training/stream/_00_Filter.java#L47
 
 ### 참고 자료
