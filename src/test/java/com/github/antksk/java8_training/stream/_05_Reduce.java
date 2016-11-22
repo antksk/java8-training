@@ -7,59 +7,78 @@ import org.junit.Test;
 
 import com.github.antksk.java8_training.data.TestData;
 
+import lombok.AllArgsConstructor;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class _05_Reduce {
-  
-  interface OptionalDisplay{
+
+  interface OptionalDisplay {
     void display();
   }
-  
+
   @Value
-  static class OptionalString implements OptionalDisplay{
+  @AllArgsConstructor
+  static class OptionalString implements OptionalDisplay {
     Optional<String> value;
+
+    public OptionalString(String value) {
+      this(Optional.of(value));
+    }
+
     @Override
     public void display() {
-      value.ifPresent(o->log.debug("{}",o));
+      value.ifPresent(o -> log.debug("{}", o));
     }
   }
-  
+
   @Value
-  static class OptionalInteger implements OptionalDisplay{
+  @AllArgsConstructor
+  static class OptionalInteger implements OptionalDisplay {
     Optional<Integer> value;
+
+    public OptionalInteger(int value) {
+      this(Optional.of(value));
+    }
+
     @Override
     public void display() {
-      value.ifPresent(o->log.debug("{}",o));
+      value.ifPresent(o -> log.debug("{}", o));
     }
   }
-  
+
+  //@formatter:off;
   @Test
   public void 지정된_조건에_따라_결과_줄이기() {
     
     List<String> dummyNameList = new TestData().inMemoryDataWithDummyNameList();
     
     log.debug("dummyNameList : {}", dummyNameList);
-    Optional<String> optional = dummyNameList.stream().reduce((reduceBuff,next)->{
-      log.debug("s0 : {}, s1: {}", reduceBuff, next);
-      return String.format("%s,%s",reduceBuff,next);
-    });
+    display( new OptionalString(dummyNameList
+      .stream()
+      .reduce((reduceBuff,next)->{
+        // log.debug("s0 : {}, s1: {}", reduceBuff, next);
+        return String.format("%s,%s",reduceBuff,next);
+      }))
+    );
     
-    display( new OptionalString(optional) );
+    // 가장 긴 문자열을 찾아 출력
+    display( new OptionalString(dummyNameList
+      .stream()
+      .reduce((s0, s1)->(s0.length()>=s1.length())? s0 : s1)) 
+    );
     
-    
-    
+    // 짝수인 숫자만 검색해서 sum한 값을 리턴
     List<Integer> dummyIntegers = new TestData().inMemoryDataWithDummyIntegers();
-    Optional<Integer> optional2 = dummyIntegers.stream().reduce((i0,i1)->{
-      if(isEven(i1)){
-        log.debug("i0: {}, i1: {}", i0, i1);
-        return i0 += i1;
-      }
-      return 0;
-    });
-    display( new OptionalInteger(optional2) );
+    log.debug("dummyIntegers : {}", dummyIntegers);
+    display( new OptionalInteger(dummyIntegers
+      .stream()
+      .filter(this::isEven)
+      .reduce(0, Integer::sum)) 
+    );
   }
+  //@formatter:on;
   
   void display(OptionalDisplay o){
     o.display();
