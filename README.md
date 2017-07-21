@@ -14,6 +14,7 @@ gradle eclipse
 	- [Lambda expressions][Lambda_expressions]
 	- [Functional Interface][Functional_Interface]
 	- [Built-in Functional Interfaces][Built_in_Functional_Interfaces]
+	
 [Default_Method_for_Interface]: https://github.com/antksk/java8-training/blob/develop/src/test/java/com/github/antksk/java8_training/_00_Default_Method_for_Interface.java#L73
 [Lambda_expressions]: https://github.com/antksk/java8-training/blob/develop/src/test/java/com/github/antksk/java8_training/_01_Lambda_expressions.java#L44
 [Functional_Interface]: https://github.com/antksk/java8-training/blob/develop/src/test/java/com/github/antksk/java8_training/_02_Functional_Interface.java#L38
@@ -27,6 +28,7 @@ gradle eclipse
 	- __(terminal)__ [match][match] : any(아무거나 한개 이상 match), all(모두 match), none(한개도 match되지 않음) match가 존재 하며, 소비 함수 임 
 	- __(terminal)__ [count][count] : stream에 존재하는 element 갯수 확인(소비, long 타입으로 리턴)
 	- __(terminal)__ [reduce][reduce] : 결합법칙(결합하는 순서는 중요하지 않아야 함)이 적용된 결과값을 리턴
+	
 [filter]: https://github.com/antksk/java8-training/blob/develop/src/test/java/com/github/antksk/java8_training/stream/_00_Filter.java#L47
 [sorted]: https://github.com/antksk/java8-training/blob/develop/src/test/java/com/github/antksk/java8_training/stream/_01_Sorted.java#L14
 [map]: https://github.com/antksk/java8-training/blob/develop/src/test/java/com/github/antksk/java8_training/stream/_02_Map.java#L16
