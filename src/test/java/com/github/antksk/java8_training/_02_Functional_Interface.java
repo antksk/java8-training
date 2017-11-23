@@ -55,12 +55,13 @@ public class _02_Functional_Interface {
       return Integer.MIN_VALUE;
     }
     
-    final Map<String, Integer> map = new ImmutableMap.Builder<String, Integer>()
+    private final  Map<String, Integer> map = new ImmutableMap.Builder<String, Integer>()
       .put("show",111)
       .put("me",222)
       .put("the",333)
       .put("money",444)
     .build();
+
     public Integer toMappingInt(String from) {
       if( map.containsKey(from) ){
         return map.get(from);

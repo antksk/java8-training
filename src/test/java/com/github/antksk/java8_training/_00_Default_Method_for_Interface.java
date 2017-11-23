@@ -8,6 +8,10 @@ import org.junit.Test;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.PriorityQueue;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
 /**
  * @author Seung Gyum Kim
  * @see 
@@ -51,11 +55,9 @@ public final class _00_Default_Method_for_Interface {
    * 화씨(F)에서 섭씨(C)로 변환 
    */
   class CelsiusFormula implements Formula{
+
     @Override
-    public double calculate(double F) {
-      return (F - base()) / gap();
-    }
-    
+    public double calculate(double F) { return (F - base()) / gap(); }
   }
   
   /**
@@ -72,7 +74,7 @@ public final class _00_Default_Method_for_Interface {
   //@formatter:off;
   @Test
   public void 인터페이스의_기본_메소드를_사용_한_테스트(){
-    
+    ArrayBlockingQueue
     log.debug("#### CelsiusFormula : ");
     CelsiusFormula celsius = new CelsiusFormula();
     result(celsius, -459.67,  -273.15); // 예상 : -273.15 °C
@@ -102,7 +104,7 @@ public final class _00_Default_Method_for_Interface {
   private void result(Formula formula, double value, double expect) {
     // assertThat(formula.calculate(value), is(expect));
     assertThat(formula.calculate(value), closeTo(expect, 2));
-    log.debug("{} := {}", formula.calculate(value), expect);
+    log.debug("\t{} := {}", formula.calculate(value), expect);
   }
   
 }
