@@ -1,6 +1,6 @@
 package com.github.antksk.java8_training.thread;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class _01_Single_Threaded_Execution {
     static class Gate{

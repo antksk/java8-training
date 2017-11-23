@@ -2,7 +2,8 @@ package com.github.antksk.java8_training.stream;
 
 import com.github.antksk.java8_training.data.TestData;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Map;
@@ -11,9 +12,11 @@ import java.util.function.Function;
 import static java.util.stream.Collectors.groupingBy;
 
 @Slf4j
+@DisplayName("06  Collectors.groupingBy(curring)")
 public class _06_Collectors_groupingBy {
     @Test
-    public void 단일_groupingBy_테스트(){
+    @DisplayName("단일 groupingBy 테스트")
+    public void test1(){
         List<TestData.Item> items = new TestData().inMemoryDataWithItemList();
         final Map<TestData.ItemType, List<TestData.Item>> itemTypeListMap = items.stream().collect(groupingBy(TestData.Item::getType));
 
@@ -26,7 +29,8 @@ public class _06_Collectors_groupingBy {
     }
 
     @Test
-    public void 다중_groupingBy_테스트(){
+    @DisplayName("다중 groupingBy 테스트")
+    public void test2(){
         List<TestData.Item> items = new TestData().inMemoryDataWithItemList();
 
         // Map의 첫번째 키를 Item Type으로 지정

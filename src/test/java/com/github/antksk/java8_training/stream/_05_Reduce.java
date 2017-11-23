@@ -3,15 +3,16 @@ package com.github.antksk.java8_training.stream;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.Test;
-
 import com.github.antksk.java8_training.data.TestData;
 
 import lombok.AllArgsConstructor;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 @Slf4j
+@DisplayName("05 stream.reduce")
 public class _05_Reduce {
 
   interface OptionalDisplay {
@@ -50,7 +51,8 @@ public class _05_Reduce {
 
   //@formatter:off;
   @Test
-  public void 지정된_조건에_따라_결과_줄이기() {
+  @DisplayName("지정된 조건에 따라 결과 줄이기")
+  public void test() {
     
     List<String> dummyNameList = new TestData().inMemoryDataWithDummyNameList();
     

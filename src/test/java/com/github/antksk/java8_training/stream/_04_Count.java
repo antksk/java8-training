@@ -5,17 +5,19 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 import static java.util.stream.Collectors.toList;
 
-import org.junit.Test;
-
 import com.github.antksk.java8_training.data.TestData;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 @Slf4j
+@DisplayName("04 stream.count")
 public class _04_Count {
-  
+
   @Test
-  public void 갯수_판단(){
+  @DisplayName("갯수 판단")
+  public void  test(){
     Predicate<? super String> startCharA = t->t.startsWith("a");
     display("{}, {} ", 
         _ds(startCharA).collect(toList()), 

@@ -2,19 +2,23 @@ package com.github.antksk.java8_training.stream;
 
 import java.util.List;
 
-import org.junit.Test;
 
 import com.github.antksk.java8_training.data.TestData;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
 
 @Slf4j
+@DisplayName("03 steram.xxxxMatch")
 public class _03_Match {
   
   @Test
-  public void 조건_매칭_여부_판단(){
+  @DisplayName("조건 매칭 여부 판단")
+  public void test(){
     List<String> dummyNameList = new TestData().inMemoryDataWithDummyNameList();
-    
+
     log.debug("{}", dummyNameList );
     
     display("anyMatch(t->t.startsWith(\"a\")) 한개라도 맞으면 true : {} ", dummyNameList.stream()

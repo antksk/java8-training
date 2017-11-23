@@ -1,4 +1,4 @@
-package com.github.antksk.java8_training;
+package com.github.antksk.java8_training.basic;
 
 import com.google.common.collect.Lists;
 

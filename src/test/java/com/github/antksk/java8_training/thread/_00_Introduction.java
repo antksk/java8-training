@@ -3,7 +3,7 @@ package com.github.antksk.java8_training.thread;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Value;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
