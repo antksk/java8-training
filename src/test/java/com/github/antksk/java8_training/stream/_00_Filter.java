@@ -34,7 +34,7 @@ public class _00_Filter implements TestLogDisplay{
       filteringAndDisplayResult(c, stream);
     });
   }
-  
+
   @Test
   @DisplayName("필터를 활용해 조건에 맞는 데이터만 출력 2")
   public void test_2(){
@@ -48,9 +48,14 @@ public class _00_Filter implements TestLogDisplay{
     filteringAndDisplayResult(a, dummyList.stream());
     filteringAndDisplayResult(b, dummyList.stream());
     filteringAndDisplayResult(c, dummyList.stream());
-    
   }
-  
+
+  /**
+   * filter 고차함수는 파리미터로 넘어온 조건함수(Predicate)를 기반으로 각 요소에 적용하여
+   * true, false에 따라 요소들을 걸러내는 역활함
+   * @param predicate
+   * @param stream
+   */
   void filteringAndDisplayResult(Predicate<? super String> predicate, Stream<String> stream){
     stream.filter(predicate)
     .forEach(display(log));

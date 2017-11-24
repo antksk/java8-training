@@ -1,5 +1,6 @@
 package com.github.antksk.java8_training.stream;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
@@ -13,6 +14,10 @@ import org.junit.jupiter.api.Test;
 @Slf4j
 @DisplayName("02 stream.map")
 public class _02_Map implements TestLogDisplay {
+    /**
+     * map고차함수는 지정된 메소드(Function)를 기반으로
+     * 각 요소를 가공하여 새로운 객체를 생성함
+     */
   @Test
   @DisplayName("map를 활용하여, 새로운 객체 생성")
   public void test(){
@@ -23,7 +28,7 @@ public class _02_Map implements TestLogDisplay {
        .map(String::toUpperCase)
        .forEach(display(log))
      ;
-     
+
      log.debug("[문자열 첫 글자만 대문자로 변환]");
      dummyNameList.stream()
        .map(this::firstCharUpperCase)

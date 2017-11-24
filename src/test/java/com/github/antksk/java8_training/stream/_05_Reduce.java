@@ -50,6 +50,13 @@ public class _05_Reduce {
   }
 
   //@formatter:off;
+  /**
+   * reduce 고차함수는 캐터모피즘이라는 목록 조작 개념을 이용하여 제작된 함수로
+   * 파라미터값으로 BinaryOperator(BiFunction 확장형) 함수를 받는다.
+   * 각 요소에 BiFunction.apply 함수를 적용하여, 단일 값으로 가공함
+   *
+   * 캐터모피즘 : 카테고리 이론의 한 개념으로 지정된 목록(여러 요소)을 접어서 다른 형태의 단일 값으로 만드는 연산을 총칭한다.
+   */
   @Test
   @DisplayName("지정된 조건에 따라 결과 줄이기")
   public void test() {
